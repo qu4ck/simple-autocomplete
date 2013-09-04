@@ -1,0 +1,36 @@
+<html>
+<head>
+    <style>
+        #suggestSearch{position: relative;}
+        .suggestList{width:150px;z-index:1;border:1px solid #000000; 
+            overflow:auto; height:100px; background-color:#FFFFFF;
+        }
+        .suggestData{padding:2px;cursor:pointer;}
+        .suggestData:hover{background-color:#000;}
+        .suggestData:nth-of-type(odd){background-color:#FFFFFF;}
+        .suggestData:nth-of-type(even){background-color:#F5F5F5;}
+        .mouseOver{background-color: #999!important;}
+    </style>
+    <script language="JavaScript" type="text/javascript" src="myAutoComplete.min.js"></script>        
+</head>
+<body>
+    Simple AJAX Autocomplete:
+    <form id="suggestSearch">
+        <label>Nama : </label>
+        <input type="text" id="nama" alt="Search Criteria" />
+        <div id="layer1"></div>
+    </form>
+    <script type="text/javascript">       
+        var option = {
+             textID  : "nama"
+            ,targetID: "layer1" 
+            ,url     : "search_data.php"
+            ,queryStr: "search"
+            ,minLength : 2
+        };
+        isoweb.autocomplete(option, function(item){
+            alert(item['label']);
+        });    
+    </script>
+</body>
+</html>
